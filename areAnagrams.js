@@ -1,17 +1,30 @@
 /* SOLUTION 1 */
 const areAnagrams = (str1, str2) => {
-  let sortedStr1 = str1.toLowerCase().split("").sort().join("");
-  let sortedStr2 = str2.toLowerCase().split("").sort().join("");
+  /* to remove spaces use 
+  `string.replaceAll(" ", "")` or Regular Expressions 
+  `string.replace(/\s/g, "")` */
+  let sortedStr1 = str1
+    .replaceAll(" ", "")
+    .toLowerCase()
+    .split("")
+    .sort()
+    .join("");
+
+  let sortedStr2 = str2
+    .replaceAll(" ", "")
+    .toLowerCase()
+    .split("")
+    .sort()
+    .join("");
 
   if (sortedStr1.length != sortedStr2.length) return false;
   return sortedStr1 === sortedStr2;
 };
 
+console.log(areAnagrams("Debit Card", "Bad Credit"))
+console.log(areAnagrams("Debit Card", "Bad Cred"))
 console.log(areAnagrams("triangle", "integral"));
-console.log(areAnagrams("silent", "liste"));
-console.log(areAnagrams("silent", "listen"));
-console.log(areAnagrams("silent", "lister"));
-
+console.log(areAnagrams("triangle", "integer"));
 
 /* SOLUTION 2 */
 // function areAnagrams(stringA, stringB) {
@@ -24,7 +37,7 @@ console.log(areAnagrams("silent", "lister"));
 //     const charMapA = getCharMap(stringA)
 //     const charMapB = getCharMap(stringB)
 
-//     /* Next, we loop through each character in the charMapA, 
+//     /* Next, we loop through each character in the charMapA,
 //     and check if it exists in charMapB and has the same value as
 //     in charMapA. If it does not, return false */
 //     for (let char in charMapA) {
@@ -41,8 +54,8 @@ console.log(areAnagrams("silent", "lister"));
 //     // let charMap = new Map // You can use this or an empty obj
 //     let charMap = {};
 
-//     /*We loop through each character in the string. if the character 
-//     already exists in the map, increase the value, otherwise add it 
+//     /*We loop through each character in the string. if the character
+//     already exists in the map, increase the value, otherwise add it
 //     to the map with a value of 1 */
 //     for (let char of string) {
 //         charMap[char] = charMap[char] + 1 || 1
